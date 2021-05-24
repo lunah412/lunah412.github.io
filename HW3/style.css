@@ -9,7 +9,7 @@ h1.header{
    font-family: Arial, Helvetica, sans-serif;
    font-size: small;
    font-weight: 300;
-   margin-left: 10%;
+   margin-left: 8%;
 }
 
 h2.title{
@@ -21,8 +21,14 @@ h2.title{
    letter-spacing:10px;
 }
 
-table{
+HR.one{
+   color:#d2d2df; 
+   width:1200px; 
    margin:0 auto;
+}
+
+table{
+   margin-left:15%;
    width:900px;
    height:40px;
 }
@@ -37,37 +43,113 @@ a:hover{text-decoration: none;color:black;font-family: Arial, Helvetica, sans-se
 
 div.headerpic{
    margin-left:0;
-   width:1100px;
-   height:500px;
+   width:1200px;
+   height:600px;
    background-image: url(image6.jpg);
    background-attachment: fixed;
-   background-size: 1600px 1000px;
+   background-size: 1800px 1200px;
    background-repeat:no-repeat;
-   background-position: -250px 70px;
+   background-position: -300px 70px;
 }
 
 div.scroll{
-   width:900px;
+   width:950px;
    margin:0 auto;
 }
 
 img.guest{
    float:left;
-   width:400px;
-  
+   width:450px;
+   margin-top: 15%;
 }
 
-h1.title{
-   text-align:center;
+.p1{
+   float:right;
+   width:450px;
+}
+
+h1.p1{
+   margin-top: 55px;
+   font-size: 12px;
+   font-family: Arial, Helvetica, sans-serif;
+   letter-spacing: 2px;
+   color:#737373;
+}
+
+h2.p1{
+   margin-top: 10px;
    color:#B39657;
-   font-size:50px;
-   font-family:Sans-serif;
-   font-weight:normal;
-   letter-spacing:10px;
+   font-family: 'Libre Baskerville', serif;
+   font-size: 32px;
+   font-style:italic;
+   font-weight: 500;
+}
+
+p.p1{
+   margin-top: 5px;
+   font-size: 14px;
+   font-family: Arial, Helvetica, sans-serif;
+   letter-spacing: 1px;
+   line-height: 20px;
+}
+
+h3.p1{
+   margin-top: 10px;
+   font-size: 15px;
+}
+
+img.artchock{
+   float:right;
+   margin-top: 70px;
+   width:450px;
+}
+
+img.leaf{
+   float:left;
+   margin-top: 50px;
+   width:450px;
+}
+
+img.salad{
+   float:right;
+   margin-top:50px;
+   margin-bottom: 50px;
+   width:450px;
+}
+
+.p2{
+   float:left;
+   width:450px;
+}
+
+h1.p2{
+   margin-top: 80px;
+   margin-bottom: 5px;
+   color:#B39657;
+   font-family: 'Libre Baskerville', serif;
+   font-size: 32px;
+   font-style:italic;
+   font-weight: 500;
+}
+
+p.p2{
+   margin-top:3px;
+   margin-bottom: 2px;
+   font-size: 14px;
+   font-family: Arial, Helvetica, sans-serif;
+   letter-spacing: 1px;
+   line-height: 20px;
+}
+
+h3.p2{
+   margin-top: 5px;
+   font-size: 15px;
+   margin-bottom: 50px;
 }
 
 div.order{
-   width:900px;
+   
+   width:950px;
    height:600px;
    margin:0 auto;
    background-image: url(image7.jpg);
@@ -124,21 +206,21 @@ p.p4{
 }
 
 div.footerpic{
-   left:0;
-   width:1100px;
-   height:430px;
+   margin-left:0;
+   width:1200px; 
+   height:450px;
    background-image:url(image5.jpg);
    width: 1200px;
    background-attachment: fixed;
-   background-size: 1100px 1100px;
+   background-size: 1200px 1200px;
    background-repeat:no-repeat;
-   background-position: 0px 50px;
-   filter:contrast(55%) brightness(110%) saturate(130%);
+   background-position: 0px 10px;
+  
 }
 
 footer{
    height:100px;
-   width:1100px;
+   width:1200px;
    padding-bottom: 50px;
    padding-top: 35px;
    padding-left: 10px;
