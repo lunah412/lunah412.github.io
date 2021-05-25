@@ -46,7 +46,7 @@ div.headerpic{
    margin-left:0;
    width:1200px;
    height:600px;
-   background-image: url(image6.jpg);
+   background-image: url(https://csci571.com/hw/hw3/images/image6.jpg);
    background-attachment: fixed;
    background-size: 1800px 1200px;
    background-repeat:no-repeat;
@@ -153,7 +153,7 @@ div.order{
    width:950px;
    height:600px;
    margin:0 auto;
-   background-image: url(image7.jpg);
+   background-image: url(https://csci571.com/hw/hw3/images/image7.jpg);
    background-size: cover;
    display:flex;
    justify-content:center; 
