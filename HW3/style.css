@@ -29,9 +29,10 @@ HR.one{
 }
 
 table{
-   margin-left:14%;
-   width:900px;
+   margin-left:10%;
+   width:950px;
    height:40px;
+   table-layout: fixed;
 }
 
 a.home {text-decoration: none;color: #B39657;font-family: Arial, Helvetica, sans-serif;}
@@ -48,9 +49,9 @@ div.headerpic{
    height:600px;
    background-image: url(https://csci571.com/hw/hw3/images/image6.jpg);
    background-attachment: fixed;
-   background-size: 1800px 1200px;
+   background-size: 1900px 1250px;
    background-repeat:no-repeat;
-   background-position: -300px 70px;
+   background-position: -350px 50px;
 }
 
 div.scroll{
@@ -149,7 +150,6 @@ h3.p2{
 }
 
 div.order{
-   
    width:950px;
    height:600px;
    margin:0 auto;
