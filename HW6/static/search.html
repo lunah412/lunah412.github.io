@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+     <script type ="text/javascript" src ="jquery-1.11.1.min.js" ></script>
+    <script type ="text/javascript" src ="search.js" ></script>
+</head>
+<body >
+    <header>
+        <h1>Events Search</h1>
+        <HR class="one" SIZE=1.2>
+        <div class="kword">
+            <p><b>Keyword</b>
+            <input class="textin keywd" type="text" name="keyword" id="keyword" autocomplete="off" onblur="ClearDiv()">
+            <div class="megbox1">
+                <div class="megbox_top"></div>
+                <div class="megbox_meg">
+                    <div class="megbox_txt">Please fill out this field.</div>
+                </div>
+            </div>
+            </p>
+            <p><b>Category</b>
+                <select id="Category">
+                    <option value="default">Default</option>
+                    <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
+                    <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
+                    <option value="KZFzniwnSyZfZ7v7na">Arts & Theatre</option>
+                    <option value="KZFzniwnSyZfZ7v7nn">Film</option>
+                    <option value="KZFzniwnSyZfZ7v7n1">Miscellaneous</option>
+                </select>
+            </p>
+            <p>
+                <b>Distance(miles)</b>
+                <input class="textin" type="text" name="distance" placeholder="10" autocomplete="off" id="distance">
+                <b>from</b>
+                <input type="radio" name="location" value="Here" value="2" checked onclick="CHERE()">Here<br>
+                <p class="l2">
+                <input type="radio" name="location" value="current" onclick="CL()">
+                <input class="textin" type="text" id="query" name="location" placeholder="location" autocomplete="off">
+                    <div class="megbox2">
+                        <div class="megbox_top"></div>
+                        <div class="megbox_meg">
+                            <div class="megbox_txt">Please fill out this field.</div>
+                        </div>
+                    </div>
+                </p>
+            </p>
+            <p class="buttom">
+                <button onclick="search()" id="search" disabled>Search</button>
+                <button  onclick="Rest_Data()">Clear</button>
+            </p>
+            
+           
+        </div>
+    </header>
+    <div id="SetCont" style="text-align:center">
+
+    </div>
+
+   <div  style="width:80%;left: 50px;margin:0 auto">
+       <div id="NameSet"></div>
+<div style="float:left;width:50%" id="ContDe"></div>
+<div style="float:right" id="ImageCon"></div>
+    </div>
+
+</body>
+</html>
