@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
     <script type ="text/javascript" src ="jquery-1.11.1.min.js" ></script>
-    <script type ="text/javascript" src ="search.js" ></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type ="text/javascript" src ="client.js" ></script>
+    <script type = "module" src="latlon-geohash.js"></script>
     
 </head>
 <body>
+    <div id="notClickDiv"></div>
+    
+    <div id="login">
+        <h1>View Seat Map</h1>
+        <input class="cross" name="Submit2" type="button" value="×" onClick="myClose(login)" style="position:absolute;top:0;right:0">
+        <HR  SIZE=1>
+        <div id="seatmap" style="width:390px;height:330px"></div>
+        <HR  SIZE=1 style="height:1">
+        <input class="close" name="Submit2" type="button" value="Close" onClick="myClose(login)" style="margin-top:5px;position: absolute;bottom:5px;right: 10px">
+    </div>
+
     <div class="container">
-        <div class="col-sm col-md9 bg-light border border-1 rounded" style="border-color:lightgray; padding-top: 20px;padding-bottom: 30px;">
+        <div class="col-sm col-md bg-light border border-1 rounded" style="border-color:lightgray; padding-top: 20px;padding-bottom: 30px;">
         <h1>Entertainment Event Ticket Search</h1>
-        <div class=" row mt-md-3">
-            <div class="col-sm col-md-2 offset-md-2 mt-3 mb-1">
+        <div class="row mt-md-3">
+            <div class="col-sm col-md-2 offset-md-2 mt-3">
                 <label class="star">Keyword</label>
             </div>
             <div class="col-sm col-md-6">
-                <input type="text" class="form-control form-control-sm" 
-                    placeholder="Enter Artist, Team or Event Name(eg.Lakers)" >
+                      
+                <input type="text" id="keyword" class="form-control form-control-sm" 
+                placeholder="Enter Artist, Team or Event Name(eg.Lakers)"  oninput="getsuggest()">
+                <div id="warning"></div>
+                      
             </div>
         </div>
-        <div class=" row mt-md-3">
+        <div class="row mt-md-3">
             <div class="col-sm col-md-2 offset-md-2 mt-3 mb-1">
                 Category
             </div>
             <div class="form-select col-sm col-md-2">
-                <select class="form-control form-control-sm">
+                <select class="form-control form-control-sm" id="Category">
                 <option value="Default">All</option>
                 <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
                 <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
@@ -47,12 +60,12 @@
                 Distance
             </div>
             <div class="col-sm col-md-2">
-                <input class="form-control form-control-sm" placeholder="10">
+                <input οnfοcus="defaultR()" οnblur="defaultR()" class="form-control form-control-sm"  id="radius"  placeholder="10"   />
             </div>
             <div class="col-sm col-md-2">
-                <select class="form-control form-control-sm">
+                <select id="unit" class="form-control form-control-sm">
                     <option value="miles">Miles</option>
-                    <option value="Meters">Kilometers</option>
+                    <option value="km">Kilometers</option>
                 </select>
             </div>
         </div>
@@ -61,23 +74,74 @@
                 <label class="star">From</label>
             </div>
             <div class="col-sm col-md-6">
-                <input type="radio" style="height: 12px;" name="location" checked="checked"> Current location<br>
-                <input type="radio" style="height:12px;" name="location"> Other.Please spectify:<br>
-                <input type="text" style="margin-left:18px;width:95%" class="form-control form-control-sm">
+                <input type="radio" id="from" style="height: 12px;" name="location" checked="checked"> Current location<br>
+                <input type="radio" id="location" style="height:12px;" name="location" > Other.Please spectify:<br>
+                <input type="text" class="form-control form-control-sm" id="locationtext" disabled style="width:95%" >
+                <div id="warning1"></div>
             </div>
         </div>
-        <div class="col-sm col-md-3 off-sm-0 offset-md-2" style="margin-top:10px;">
-            <button onclick="" id="search" class="search" disabled></button>
-            <button onclick="" id="clear" class="clear"></button>
+        <div class="col-sm col-md-3  offset-md-2" style="margin-top:10px;">
+            <button onclick="search()" id="search" class="search" disabled></button>
+            <button onclick="Rest_Data()" id="clear" class="clear"></button>
         </div>
         </div>
-    </div>
-    <div class="detail">
-        <button onclick="" class="result"></button>
-        <button onclick="" class="favourite"></button>
-    </div>
-    
-    
-    
+        <button onclick="getcode()">get</button>
+        <div class="resultbtn">
+            <button onclick="" class="result" id="result"></button>
+            <button onclick="" class="favourite" id="favourite"></button>
+        </div>
+        <div id = "progress">
 
+        </div>
+        
+        <div id="SetCont" style="margin-top: 50px;" >
+
+        </div>
+        
+        
+        
+        
+        <div class="col-sm col-md detail" name="detail" id="detail" style="margin-top:50px;">
+            <div id="header">
+                <div class ="title" id = "title" style="text-align:center;">
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-1 col-md-1">
+                        <button onclick = "backtolist()" class="list">&lt; List</button>
+                    </div>
+                    <div class="col-sm-2 col-md-2 offset-sm-2 offset-md-8" id="buttons">
+                        
+                    </div> 
+                </div>
+                <ul class="nav nav-tabs" id="tab">
+                    <li class="nav-item  ">
+                    <a class="nav-link" id="detailtab" href="#detail" onclick="switchdetail()">Event</a>
+                    </li>
+                    <li class="nav-item ">
+                    <a class="nav-link active" id="artisttab" href="#detail" onclick="switchart()">Artist/Teams</a>
+                    </li>
+                    <li class="nav-item ">
+                    <a class="nav-link" id="venustab" href="#detail" onclick="switchvenue()">Venus</a>
+                    </li>
+                </ul>
+
+            </div>
+            
+            
+            <div class = "artist win" id = "artist" >
+
+            </div>
+            <div id = "eventinfo">
+            
+            </div>
+            <div  id="venusinfo">
+                
+            </div>
+            
+
+        </div>
+        
 </body>
+
+</html>

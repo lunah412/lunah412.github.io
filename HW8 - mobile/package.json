@@ -19,7 +19,13 @@
   "author": "Google Inc.",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "^4.17.1"
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "latlon-geohash": "^2.0.0",
+    "ngeohash": "^0.6.3",
+    "node-fetch": "^2.6.1",
+    "require": "^2.4.20",
+    "spotify-web-api-node": "^5.0.2"
   },
   "devDependencies": {
     "mocha": "^8.0.0",
@@ -30,5 +36,6 @@
   "bugs": {
     "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples/issues"
   },
-  "homepage": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples#readme"
+  "homepage": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples#readme",
+  "keywords": []
 }
