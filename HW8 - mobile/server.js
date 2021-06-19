@@ -67,7 +67,7 @@ app.get('/',function(request, response){
   );
 }*/
 
-gettoken("artist");
+//gettoken("artist");
 /*app.get("/spotify", async(request, response) =>{
   const artist = request.params.artist;
   console.log(artist);
