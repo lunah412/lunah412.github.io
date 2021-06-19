@@ -1,0 +1,181 @@
+
+div.container{
+    margin-top: 50px;
+}
+h1{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 600;
+}
+label.star::after{
+    content:" * ";
+    color:red;
+}
+select{
+    width: 150px;
+    appearance:none;
+    -moz-appearance:none;
+    border-block-style:none;
+}
+button.search{
+    width:74px;
+    height: 32px;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 3px;
+    background-image: url(searchbtn.jpg);
+    background-size:contain;
+}
+button.clear{
+    width:74px;
+    height: 31px;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 3px;
+    background-image: url(clearbtn.jpg);
+    background-size:contain;
+}
+div.resultbtn{
+    width: 150px;
+    padding-top: 20px;
+    margin:auto
+}
+button.result{
+    width:60px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-image: url(resultbtn.jpg);
+    background-size:contain;
+}
+button.favourite{
+    width:60px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-image: url(favourite.jpg);
+    background-size:contain;
+}
+
+div.detail{
+    transition: all 0.5s;
+    opacity: 0;
+    position: absolute;
+    transform:translateX(-100%);
+}
+
+.show {
+    display:block;
+    display:table;
+}
+
+.noshow{
+    display:none;
+}
+
+#notClickDiv{
+    width: 100%;
+    height: 100%;
+    filter:alpha(Opacity=35);opacity:0.35;        /*设置不透明度为35%*/
+    background:#000000;                        /*设置背景为黑色*/
+    position:absolute;                            /*设置定位方式为绝对位置*/
+    display:none;                                /*设置该<div>标记显示*/
+    z-index:6;                                    /*设置层叠顺序*/
+    top:0px;                                    /*设置顶边距*/
+    left:0px;                                    /*设置左边距*/
+    margin: 0px;
+    padding: 0px;
+}
+
+#login{
+    left: 30%;
+    top: 10%;
+    position:absolute;    /*设置布局方式*/
+    width:410px;        /*设置宽度*/
+    padding:4px;        /*设置内边距*/
+    height:450px;        /*设置高度*/
+    display:none;         /*设置显示方式*/
+    z-index:20;                    /*设置层叠顺序*/
+    background-color:white;    /*设置背景颜色*/
+}
+
+#seatmap{
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.close{
+    background-color:white;
+    border-radius: 4px;
+}
+
+.close:hover { 
+    background-color: black;
+    color:white;
+ }
+
+.cross{
+    background-color:white;
+    border-radius: 4px;
+    border: none;
+    outline:none;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }
+
+.twitter{
+    height:30px;
+    width:35px;
+    background-image: url(twitter.png);
+    border-radius: 4px;
+    border: none;
+    outline:none;
+    background-size:cover;
+    background-position:center;
+    background-size: 90%;
+  }
+.like{
+    height:30px;
+    width:35px;
+    border-radius: 4px;
+    background-image: url(star.png);
+    background-size:cover;
+    background-position:center;
+}
+.list{
+    height:40px;
+    width:60px;
+    border-radius: 4px;
+    background-color:white;
+    color:black;
+    border-color: lightgrey;
+    outline:none;
+}
+#detailbtn{
+    height:40px;
+    width:80px;
+    border-radius: 4px;
+    background-color:white;
+    color:black;
+    border-color: lightgrey;
+    outline:none;
+}
+    
+    
+   
+   
+
+
+
+
+
+
+
