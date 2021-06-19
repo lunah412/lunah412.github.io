@@ -1,0 +1,114 @@
+header{
+    margin:auto;
+    width:990px;
+    height: 310px;
+    background-color: #F6F6F6;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+h1{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+input{
+    height:28px;
+    border:solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+select{
+    height:28px;
+    border:solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+label.star::after{
+    content:" * ";
+    color:red;
+}
+
+select{
+    width: 150px;
+    appearance:none;
+    -moz-appearance:none;
+    border-block-style:none;
+}
+
+div.left{
+    float:left;
+    width:100px;
+    margin-left: 170px;
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+div.right{
+    float:right;
+    width:490px;
+    margin-right: 170px;
+}
+
+div.btn{
+    height:50px;
+    width: 160px;
+    margin-top: 5px;
+    margin-left: 160px;
+}
+
+button.search{
+    width:74px;
+    height: 32px;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 3px;
+    background-image: url(searchbtn.jpg);
+    background-size:contain;
+}
+button.clear{
+    width:74px;
+    height: 31px;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 3px;
+    background-image: url(clearbtn.jpg);
+    background-size:contain;
+}
+div.detail{
+    width: 150px;
+    padding-top: 20px;
+    margin:auto
+}
+button.result{
+    width:60px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-image: url(resultbtn.jpg);
+    background-size:contain;
+}
+button.favourite{
+    width:60px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-image: url(favourite.jpg);
+    background-size:contain;
+}
+
+
