@@ -76,14 +76,14 @@ app.get('/',function(request, response){
   response.json(data);
 });*/
 
-/*async function getartist(artist, token){
+async function getartist(artist, token){
   var to = token;
   spotifyApi.setAccessToken(to);
   var data = await spotifyApi.searchArtists('David Bowie', { limit: 5, offset: 1 });
  
   //console.log(data);
   return data;
-}*/
+}
 
 app.get('/suggest/:keyword', async(request, response) => {
   const keyword = request.params.keyword;
