@@ -146,8 +146,9 @@ div.detail{
     height:30px;
     width:35px;
     border-radius: 4px;
-    border: none;
-    outline:none;
+    background-image: url(star.png);
+    background-size:cover;
+    background-position:center;
 }
 .list{
     height:40px;

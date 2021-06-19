@@ -5,6 +5,7 @@ eventdata = '';
 venue = "";
 var venlat = "";
 var venlng = "";
+var artistname="";
 const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 
@@ -14,7 +15,6 @@ async function getsuggest() {
     const url = 'suggest/' + keyword;
     const response =  await fetch(url);
     const json = await response.json();
-    console.log(json);
 }
 
 $(document).ready(function() { 
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 function defaultR(){
     var radius = document.getElementById("radius").value;
-    console.log(radius);
+ 
     if (radius =='10'){document.getElementById("radius").value =''};
     if (radius ==''){document.getElementById("radius").value='10'};
 }
@@ -68,13 +68,13 @@ $(document).ready(function () {
     
 });
 
-function getcode() {
+/*function getcode() {
     var my_client_id = '75d46b239f9d46bb9d9c9d451569d052'; // Your client id
     var client_secret = ' 6562532df849416eb58a3205dd033105'; // Your secret
     var redirect_uri = 'http://127.0.0.1:8888/';
     var scopes = 'user-read-private user-read-email';
     document.location.href = 'https://accounts.spotify.com/authorize' +'?response_type=code' +'&client_id=' + my_client_id +'&scope=' + scopes +'&redirect_uri=' + encodeURI(redirect_uri);
-};
+};*/
 
 function Rest_Data() {
     switchart();
@@ -115,7 +115,7 @@ async function showevent(){
         success: function (data) {
             eventdata = data._embedded;
             var data = data._embedded;
-            console.log(data);
+           
             if(data){
                 //对json进行升序排序函数
                 var asc = function(x,y) {
@@ -125,7 +125,7 @@ async function showevent(){
                 document.getElementById("progress").innerHTML = "";
                 //document.getElementById("detail").innerHTML = "<div col-sm col-md><button id=\"detail\">c</button>";
                 
-                var table =  "<div class=\"col-sm-2 col-md-2 offset-md-11\"><button  id=\"detailbtn\">Detail &gt;</button></div><table class=\"table\" style=\"margin:auto\"><tr><td>#</td><td>Date</td><td>Event</td><td>Category</td><td>Venue Info</td><td>Favorite</td></tr>"
+                var table =  "<div class=\"col-sm-2 col-md-2 offset-md-11\"><button onclick=\"todetail()\" id=\"detailbtn\">Detail &gt;</button></div><table class=\"table table-hover\" style=\"margin:auto\"><tr><td>#</td><td>Date</td><td>Event</td><td>Category</td><td>Venue Info</td><td>Favorite</td></tr>"
                 for (i = 0; i < data.events.length; i++) {
                     var j = i + 1;
                     if (data.events[i].dates.start.localTime == null){date =""}
@@ -172,7 +172,7 @@ async function showevent(){
                 document.getElementById("SetCont").innerHTML = table;
             }else{
                 document.getElementById("progress").innerHTML = "";
-                var table = "<table style=\"margin:auto;\"><tr><td>No Records has been found</td></tr></table><br/><hr/>";
+                var table = "<table class=\"table table-warning\" style=\"margin:auto;\"><tr><td>No Records</td></tr></table>";
                 document.getElementById("SetCont").innerHTML = table;
             }
 
@@ -180,6 +180,8 @@ async function showevent(){
             
         },
         error: function (xhr, status, err) {
+            var error = "<table class=\"table table-danger\" ><tr>Fail to get search result.</tr></table>"
+            document.getElementById("SetCont").innerHTML = error;
             // This time, we do not end up here!
         }
     });
@@ -187,25 +189,27 @@ async function showevent(){
 
 async function search(){
     if(validation() && validlocation()){
-        document.getElementById("header").style.display = "block";
+        document.getElementById("SetCont").style.display = "block";
+        document.getElementById("detail").style.display="none";
+        document.getElementById("header").style.display = "none";
         document.getElementById("progress").innerHTML = "<div class=\"progress\" style=\"margin-top: 80px;\"><div class=\"progress-bar progress-bar-striped progress-bar-animated progress2\"  role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 50%\"></div></div>\""
         showevent();
-        console.log(document.getElementById("SetCont").innerHTML);
+        //console.log(document.getElementById("SetCont").innerHTML);
     }
     
 }
 
 async function detail(id) {
     switchart();
+    document.getElementById("header").style.display = "block";
+    document.getElementById("detail").style.display="block";
     document.getElementById("SetCont").style.display = "none";
     document.getElementById("detail").style.transform = "translateX(-5%)";
     document.getElementById("detail").style.opacity = 1;
     var eventInfo = document.getElementById("tab").value;
-    console.log(id);
+   
     
 // credentials are optional
-
-
    
     $.ajax({
         type: "GET",
@@ -214,24 +218,27 @@ async function detail(id) {
         async: true,
         dataType: "json",
         success: function (eventdetail) {
-            console.log(eventdetail);
+           
             eventname = eventdetail.name;
             var table = "<table class=\"table table-striped win noshow\"  id = \"info\" style=\"margin-top: 10px;width:90%\"> <tr><td><b>Artist/Team(s)</b></td>";
             
             if(eventdetail._embedded.attractions){
                 artist = eventdetail._embedded.attractions[0].name;
+                artistname = artist;
                 for(i = 1; i < eventdetail._embedded.attractions.length;i++ ){
                     artist += " | " + eventdetail._embedded.attractions[i].name;
                 }
+                
                 table += "<td>" +  artist  +"</td></tr>";
             }
+            
             venue = eventdetail._embedded.venues[0].name;
             writetwitter();
             
             table += "<tr><td><b>Venue</b></td><td>" + venue + "</td></tr>"
             var time =  eventdetail.dates.start.localDate;
             time = getMonth(time);
-            console.log(time);
+            
             table += "<tr><td><b>Time</b></td><td>" + time +"</td></tr>";
             genre = "";
             if(eventdetail.classifications[0].subGenre){
@@ -304,7 +311,6 @@ async function detail(id) {
             
             venustable += "</table><br><div class=\"venus win noshow\" id=\"map\"></div>";
             
-            console.log(venustable);
             
             var gscript = document.getElementById("map");
             var s = document.createElement('script');
@@ -318,14 +324,37 @@ async function detail(id) {
             var artistdetail =  "<p style=\"text-align:center;font-weight:600;\">";
             document.querySelector(".title").innerHTML = "<p style=\"text-align:center;font-size:18px;font-weight: 600;\">" + eventname + "</p>";
             document.querySelector(".artist").innerHTML = eventname;
+            /*$scope.$storage = $localStorage.$default({
+                favorite: [],
+                
+            });
+            $scope.starSwitch = function(itemObj) {
+                var legisIndex = $scope.$storage.favorite.indexOf(itemObj);
+                if (legisIndex == -1 && billIndex == -1 && commiIndex == -1) {
+                    return $scope.style_unstarred;
+                } else {
+                    return $scope.style_starred;
+                }
+            };
+            $scope.Save = function(itemObj) {
+                var itemIndex = $scope.$storage.favoriteBills.indexOf(itemObj);
+                if (itemIndex == -1) {
+                    $scope.$storage.favorite.push(itemObj);
+                } else {
+                    $scope.$storage.favorite.splice(itemIndex, 1);
+                }
+            };*/
         
         },
         error: function (xhr, status, err) {
-            // This time, we do not end up here!
+           
         }
     });
     
+    
 }
+
+
 
 function validation() {
     var x;
@@ -375,8 +404,12 @@ function writetwitter(){
 
 function backtolist(){
     document.getElementById("SetCont").style.display = "block";
+    document.getElementById("detail").style.display = "none";
 }
-
+function todetail(){
+    document.getElementById("SetCont").style.display = "none";
+    document.getElementById("detail").style.display = "block";
+}
 function getartist(){
 
 }

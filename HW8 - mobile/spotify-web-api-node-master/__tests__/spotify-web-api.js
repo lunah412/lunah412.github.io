@@ -1267,7 +1267,7 @@ describe('Spotify Web API', () => {
     var api = new SpotifyWebApi();
     api.setAccessToken('myVeryLongAccessToken');
 
-    api.getUserPlaylists('thelinmichael').then(function(data) {
+    api.('thelinmichael').then(function(data) {
       expect(2).toBe(data.body.items.length);
       expect(data.statusCode).toBe(200);
       done();
