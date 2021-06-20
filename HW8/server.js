@@ -8,7 +8,7 @@ token='';
 
 var router = express.Router({caseSensitive: true});
 
-const { response, request } = require('express');
+/*const { response, request } = require('express');
 const scopes = [
   'ugc-image-upload',
   'user-read-playback-state',
@@ -39,7 +39,7 @@ const spotifyApi = new SpotifyWebApi({
 
 var client_id = '75d46b239f9d46bb9d9c9d451569d052'; // Your client id
 var client_secret = ' 6562532df849416eb58a3205dd033105'; // Your secret
-var redirect_uri = 'http://127.0.0.1:8888/';
+var redirect_uri = 'http://127.0.0.1:8888/';*/
 
 app.use(express.static(path.join(__dirname, 'public')));
 
