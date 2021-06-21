@@ -127,9 +127,9 @@ app.get('/detailinfo', async(request, response) => {
     response.json(json);
 });
 
-app.get('/', (request, response) => {
+/*app.get('/', (request, response) => {
   res.redirect(spotifyApi.createAuthorizeURL(scopes));
-});
+});*/
 
 
 
