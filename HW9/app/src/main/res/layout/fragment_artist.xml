@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ArtistFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linear2">
+    <!-- TODO: Update blank fragment layout -->
+    <ListView
+        android:id="@+id/artist_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false" />
+</LinearLayout>
+    <TextView
+        android:id="@+id/check"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:layout_marginLeft="16dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_below="@id/linear2" />
+    <TextView
+        android:id="@+id/spotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/check"
+        android:layout_below="@+id/linear2"
+        />
+
+
+</RelativeLayout>
